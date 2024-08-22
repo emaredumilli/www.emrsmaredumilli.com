@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMRS Maredumilli</title>
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #00313f;
+        }
+
+        /* Container Above Header */
+        .top-container {
+            background-color: #0fa4af;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Main Header Styles */
+        header {
+            background-image: url('header-background.jpg');
+            background-color: white;
+            color: #00313f;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0;
+            background-size: cover;
+            height: 100px;
+            position: relative;
+            animation: fancy-frame 2s infinite;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fancy-frame {
+            0% {
+                box-shadow: 0 0 10px 3px rgba(255, 0, 0, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 10px 3px rgba(255, 0, 0, 0.7);
+            }
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header h1 span {
+            display: block;
+            font-size: 20px;
+            color: midnight blue;
+        }
+
+        header .left {
+            display: flex;
+            align-items: center;
+	    gap: 10px;
+        }
+
+        header .right {
+            text-align: right;
+   	    display: flex;
+            align-items: center;
+            gap: 10px; /* Add space between logos */
+        }
+
+        header img {
+            max-height: 70px;
+            margin-right: 0px;
+        }
+	header .right img:last-child {
+	    margin-right: 0; /* Ensure no extra margin on the last image */
+	}
+
+        /* Tab Ribbon Styles */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+	    font-size: 14px;
+            font-weight: bold;
+            justify-content: space-around;
+            background-color: #0fa4af;
+            height: 40px;
+        }
+
+        nav ul li {
+            flex-grow: 1;
+            text-align: center;
+            line-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: white;
+	    font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+	nav ul li a:hover {
+    	    background-color: #B62625; /* Change background color on hover */
+            color: #FFA500; /* Change text color on hover (optional) */
+            border-radius: 10px;
+	}
+
+        /* Main Content Styles */
+        main {
+            padding: 20px;
+        }
+
+        main section {
+            display: none;
+            animation: slide-up 0.2s ease-out;
+        }
+
+        main section.active {
+            display: block;
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header 2 (h2) Styles */
+        h2 {
+            color: white;
+        }
+
+        h3 {
+            color: White;
+        }
+
+        /* About Us Tab Content */
+        .about-options {
+            display: flex;
+	    
+            justify-content: center;
+            margin-bottom: 20px;
+	    flex-wrap: wrap;
+        }
+
+        .about-options button {
+            padding: 10px;
+            background-color: #0fa4af;
+            color: white;
+            border: none;
+	    font-size: 16px;
+	    font-weight: bold;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-right: 5px;
+            text-align: center;
+        }
+
+        .about-options button:last-child {
+            margin-right: 0;
+        }
+
+        .about-options button:hover {
+            background-color: white;
+            color: Black;
+        }
+
+        .tab-section {
+            
+	    color: #FFFF00;
+	    display: none;
+	    	    
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+        /* Table Styles */
+        table {
+            margin: 0 auto;
+	    width: 80%;
+            border-collapse: collapse;
+            background-color: #f9f8f6;
+            margin-bottom: 10px;
+        }
+
+        table th {
+            color: white;
+	    background-color: #023020;
+            font-family: Arial, sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+	    border: 1px solid #ddd;
+	   
+        }
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            background-color: White;
+            font-weight: bold;
+	   
+        }
+
+      
+        /* Login & Sign Up Styles */
+        .login-section {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        .login-section input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-section button {
+            padding: 10px;
+            background-color: indigo;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .login-section .social-login img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #0fa4af;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+        }
+
+        footer .qr-code img {
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        /* Image Slider Styles */
+        .image-slider {
+            width: 100%;
+            height: 80vh; /* Full viewport height */
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 1s ease;
+            width: 100%;
+            height: 100%; /* Full height of the slider */
+        }
+
+        .slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the entire slider */
+        }
+
+        .image-slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+	/* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            .login-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 15px;
+        }
+
+        .modal-content p {
+            margin: 0 0 10px;
+        }
+
+        .modal-content button {
+            background-color: #0fa4af;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal-content button:hover {
+            background-color: #00313f;
+        }
+	
+	/* Flex container for side-by-side layout */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px;
+        }
+
+        /* Address box styling */
+        .address-box {
+            flex: 1;
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            color: Indigo;
+	    border-radius: 15px;
+
+        }
+
+        /* Map container styling */
+        .map-container {
+            flex: 2;
+            height: 300px;
+	    width: 400px;
+            border-radius: 15px;
+
+        }
+
+        /* Make the map and address box responsive */
+        @media screen and (max-width: 400px) {
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .address-box, .map-container {
+                margin-right: 20px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+
+    </style>
+</head>
+
+<body>
+    <!-- Container Above Header -->
+    <div class="top-container">
+        <h3>Welcome to the Official Website of EMRS Maredumilli</h3>
+        <button onclick="openModal()">Click Here for Important Information</button>
+    </div>
+
+    <header>
+        <div class="left">
+            <img src="images/emrs_logo.png" alt="EMRS Logo">
+            <div>
+                <h1>Eklavya Model Residential School, (Co-Edu) Maredumilli</h1>
+                <span>एकलव्य मॉडल रेजिडेंशियल स्कूल, मारेडुमिलि</span>
+                <p>Affiliated to Central Board of Secondary Education (CBSE)</p>
+            </div>
+        </div>
+	<div class="right">
+    	   <img src="images/mota_logo.png" alt="MoTA Logo">
+           <img src="images/amrit_mahotsav_logo.png" alt="Azadi ka Amrit Mahotsav Logo">
+           <img src="images/aptwreis_logo.png" alt="APTWREIS Logo">
+           <img src="images/g20_logo.png" alt="g20 Logo">
+        </div>
+
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('about-us')">About Us</a></li>
+            <li><a href="#" onclick="showSection('employee-details')">Employee Details</a></li>
+            <li><a href="#" onclick="showSection('student-enrolled')">Student Enrolled</a></li>
+            <li><a href="#" onclick="showSection('student-achievements')">Student Achievements</a></li>
+            <li><a href="#" onclick="showSection('events-activities')">Events & Activities</a></li>
+            <li><a href="#" onclick="showSection('gallery')">Gallery</a></li>
+            <li><a href="#" onclick="showSection('contact-us')">Contact Us</a></li>
+            <li><a href="#" onclick="showSection('login')">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="active">
+            <div class="image-slider">
+                <div class="slides">
+                    <img src="images/image1.jpeg" alt="Slide 1">
+                    <img src="images/image2.jpeg" alt="Slide 2">
+                    <img src="images/image3.jpeg" alt="Slide 3">
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us">
+            <h2>About Us</h2>
+	    <div class="about-options">
+                <button onclick="showAboutSection('About')">About</button>
+		<button onclick="showAboutSection('vision')">Vision</button>
+                <button onclick="showAboutSection('mission')">Mission</button>
+                <button onclick="showAboutSection('objective')">Objective</button>
+                <button onclick="showAboutSection('principals-word')">Principal's Word</button>
+            </div>
+            <div id="About" class="tab-section">
+                <h3>About EMRS Maredumilli</h3>
+                <p>Eklavya Model Residential Schools (EMRS) are a government initiative in India aimed at providing quality education to tribal children. </p>
+<p>Established under the Ministry of Tribal Affairs, EMRS institutions focus on promoting educational opportunities for Scheduled Tribes (ST) students, particularly in remote and underserved areas.</p>
+	    </div>
+	    
+	    <div id="vision" class="tab-section">
+                <h3>Our Vision</h3>
+                <p>The vision of Eklavya Model Residential Schools (EMRS) is to provide high-quality education to tribal students, empowering them to reach their full potential and compete with the best in the country. </p>
+<p>EMRS aims to create an educational environment that nurtures academic excellence, promotes all-around development, and preserves the cultural heritage of tribal communities.</p>
+<p> The ultimate goal is to bridge the educational gap between tribal and non-tribal students, ensuring that tribal children have the opportunity to succeed in various fields, contribute to nation-building, and lead fulfilling lives.</p>
+            </div>
+            <div id="mission" class="tab-section">
+                <h3>Our Mission</h3>
+                <p>Provide Quality Education: Deliver high-standard education to tribal students, aligned with the CBSE curriculum, ensuring they have access to the same educational opportunities as their peers in urban areas.</p>
+
+<p>Promote Holistic Development: Focus on the all-around development of students by integrating academic learning with extracurricular activities, sports, and life skills, fostering their intellectual, physical, and emotional growth.</p>
+
+<p>Preserve Tribal Culture: Encourage the preservation and promotion of tribal languages, traditions, and cultural practices within the school environment, creating a sense of pride and identity among students.</p>
+
+<p>Ensure Inclusivity: Offer an inclusive learning environment that respects diversity and provides equal opportunities for all students, with special attention to the needs of tribal children.</p>
+
+<p>Empower Students for the Future: Equip students with the knowledge, skills, and confidence needed to pursue higher education, professional careers, and leadership roles, enabling them to contribute meaningfully to society and the nation.</p>
+
+<p>Promote Social Equity: Work towards reducing educational disparities between tribal and non-tribal populations, contributing to social equity and justice in India.</p>
+            </div>
+            <div id="objective" class="tab-section">
+                <h3>Our Objective</h3>
+                <p>Enhance Educational Access: Provide accessible and quality education to tribal students in remote and underserved areas, ensuring they have the same opportunities as students in more developed regions.</p>
+
+<p>Improve Educational Outcomes: Raise the academic performance of tribal students by offering a well-rounded education that includes rigorous academics, extracurricular activities, and life skills training.</p>
+
+<p>Bridge the Educational Gap: Reduce the educational disparities between tribal and non-tribal students by providing a conducive learning environment that supports academic excellence and personal growth.</p>
+
+<p>Promote Cultural Awareness: Foster an understanding and appreciation of tribal cultures, languages, and traditions among students, ensuring these are integrated into the school curriculum and activities.</p>
+
+<p>Facilitate Higher Education and Career Opportunities: Prepare students for higher education and competitive exams, helping them gain entry into universities and professional courses, thereby opening up diverse career opportunities.</p>
+
+<p>Support Social and Economic Mobility: Empower tribal students to break the cycle of poverty and social marginalization by equipping them with the education and skills needed for upward social and economic mobility.</p>
+
+<p>Encourage Leadership and Civic Responsibility: Develop leadership qualities and a sense of civic responsibility among students, encouraging them to become responsible citizens who contribute to their communities and the nation.</p>
+
+<p>Promote Gender Equality: Ensure equal educational opportunities for both male and female students, promoting gender equality and empowering girls to pursue education and careers.</p>
+	            </div>
+            <div id="principals-word" class="tab-section" >
+                <h3>Principal's Word</h3>
+                <p>"Dear Students, Parents, and Well-Wishers,</p>
+
+<p>Welcome to Eklavya Model Residential School, a place where we strive to nurture and develop the young minds entrusted to our care. Our mission is to provide quality education that not only focuses on academic excellence but also on the holistic development of each student.</p>
+
+<p>At EMRS, we believe in fostering an environment where students can grow intellectually, emotionally, and socially. We aim to empower our students with the knowledge and skills necessary to succeed in life while instilling in them a deep respect for their cultural heritage and values.</p>
+
+<p>Our dedicated team of educators is committed to creating a supportive and inclusive learning environment where every student is encouraged to reach their full potential. We emphasize the importance of preserving and promoting our rich tribal culture while preparing our students to meet the challenges of the modern world.</p>
+
+<p>I encourage all students to make the most of the opportunities provided to them at EMRS and to strive for excellence in everything they do. Together, we can create a future where our students not only succeed academically but also become responsible and compassionate citizens.</p>
+
+<p>Thank you for being a part of our EMRS family. Let us continue to work together to achieve our shared goals.</p>
+
+<img src="path-to-principal-image.jpg" alt="Principal Image" style="float: right; margin-left: 10px; width: 100px; height: auto;">
+<p style="text-align: right;">Warm regards,</p>
+<p style="text-align: right;">[Shankar Prasad]</p>
+<p style="text-align: right;">Principal,</p>
+<p style="text-align: right;">Eklavya Model Residential School,</p>
+<p style="text-align: right;">Maredumilli</p>
+            </div>
+        </section>
+
+        <section id="employee-details">
+            <h2>Employee Details</h2>
+            <table>
+                <tr>
+                    <th>Name of the Employee</th>
+                    <th>Designation</th>
+                    <th>Qualfication</th>
+                </tr>
+                <tr>
+                    <td>G Mani Bharat </td>
+                    <td>PGT Computer Science</td>
+                    <td>M.Tech CSE</td>
+                </tr>
+                <tr>
+                    <td>J Prudhvi Nath</td>
+                    <td>PGT Biology</td>
+                    <td>M.Sc Botony</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="student-enrolled">
+            <h2>Student Enrolled for the Academic Year 2024-25</h2>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Girls</th>
+                    <th>Boys</th>
+                </tr>
+                <tr>
+                    <td>6th Class</td>
+                    <td>30</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>7th Class</td>
+                    <td>30</td>
+                    <td>30</td>
+                </tr>
+		<tr>
+                    <td>8th Class</td>
+                    <td>30</td>
+                    <td>30</td>
+                </tr>
+		<tr>
+                    <td>9th Class</td>
+                    <td>30</td>
+                    <td>30</td>
+                </tr>
+		<tr>
+                    <td>10th Class</td>
+                    <td>30</td>
+                    <td>30</td>
+                </tr>
+		<tr>
+                    <td>11th Class (MPC)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr>
+                    <td>11th Class (BiPC)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr>
+                    <td>11th Class (HEP)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr>
+                    <td>12th Class (MPC)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr>
+                    <td>12th Class (BiPC)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr>
+                    <td>12th Class (HEP)</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+		<tr style="background-color: yellow;font-size: 20px; font-weight: bold; color: red;">
+                    <td>Grand Total</td>
+                    <td>240</td>
+                    <td>240</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="student-achievements">
+            <h2>Student Achievements</h2>
+            <p>Details of student achievements will be displayed here.</p>
+        </section>
+
+        <section id="events-activities">
+            <h2>Events & Activities</h2>
+            <p>Details of events and activities will be displayed here.</p>
+        </section>
+
+        <section id="gallery">
+            <h2>Photo & Video Gallery</h2>
+            <p>Photos and videos will be displayed here.</p>
+        </section>
+
+        <section id="contact-us">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+    		<!-- Address Box -->
+    		<div class="address-box">
+       		    <h3 style="color: black;">Our Office Address</h3>
+        	    <p><strong>Eklavya Model Residential School</strong><br>
+			       Opposite Bharat Petrol Bunk,<br>
+       		    	       Beside APTWR Junior College<br>
+			       Maredumilli, Alluri Sitarama Raju District<br>
+        	               Andhra Pradesh-533295<br>
+			       Contact: 94540 04863<br>
+			       Email: emrsmaredumilli@gmail.com</p>
+   		</div>
+
+   		<!-- Embedded Google Map -->
+   		<div class="map-container">
+      		    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.267507146057!2d81.7133166759134!3d17.590027596934494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a373bf7209f4507%3A0x79fa212085abda3b!2sEkalavya%20Model%20Residential%20School!5e0!3m2!1sen!2sin!4v1724300024157!5m2!1sen!2sin" width="1100" height="300" border-radius: 15px;
+style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            		
+    		</div>
+	    </div>
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <div class="login-section">
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button>Login</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EMRS Maredumilli. All rights reserved.</p>
+        <div class="social-icons">
+            <img src="images/facebook.png" alt="Facebook">
+            <img src="images/twitter.png" alt="Twitter">
+            <img src="images/instagram.png" alt="Instagram">
+        </div>
+        <div class="qr-code">
+            <img src="images/qr-code.png" alt="QR Code">
+        </div>
+    </footer>
+
+    <!-- Modal Content -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <h3>Important Information</h3>
+            <p>This is a critical announcement for all students and staff.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to switch between sections
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('main section');
+            sections.forEach(function (section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Function to switch between About Us sections
+        function showAboutSection(sectionId) {
+            document.querySelectorAll('.tab-section').forEach((section) => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Image slider functionality
+        var slideIndex = 0;
+        var slides = document.querySelectorAll('.slides img');
+
+        function showSlides() {
+            slides.forEach(function(slide, index) {
+                slide.style.display = 'none';
+            });
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Initial call to start the image slider
+        showSlides();
+
+        // Modal functionality
+        function openModal() {
+            document.getElementById('infoModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
